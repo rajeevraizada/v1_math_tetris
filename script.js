@@ -140,20 +140,20 @@ function show_intro_screen() {
     text('Goal:', text_x, y_start + 6 * y_gap);
     text('Complete a level by clearing 100 blocks', text_x, y_start + 7 * y_gap);
     text('before you run out of swaps!', text_x, y_start + 8 * y_gap);
-    text('Completing a level unlocks the next one.', text_x, y_start + 9 * y_gap);
+    // text('Completing a level unlocks the next one.', text_x, y_start + 9 * y_gap);
     text('Select a level below:', text_x, y_start + 11 * y_gap);
 
-    rect(text_x - 20, y_start + 12 * y_gap, 250, 1.5*y_gap);
+    rect(text_x - 20, y_start + 12 * y_gap, 250, 1.5 * y_gap);
     text('Level 1: addition', text_x, y_start + 13 * y_gap);
-    rect(text_x - 20, y_start + 14 * y_gap, 250, 1.5*y_gap);
+    rect(text_x - 20, y_start + 14 * y_gap, 250, 1.5 * y_gap);
     text('Level 2: subtraction', text_x, y_start + 15 * y_gap);
-    rect(text_x - 20, y_start + 16 * y_gap, 250, 1.5*y_gap);
+    rect(text_x - 20, y_start + 16 * y_gap, 250, 1.5 * y_gap);
     text('Level 3: multiplication', text_x, y_start + 17 * y_gap);
-    rect(text_x - 20, y_start + 18 * y_gap, 250, 1.5*y_gap);
+    rect(text_x - 20, y_start + 18 * y_gap, 250, 1.5 * y_gap);
     text('Level 4: fractions and decimals', text_x, y_start + 19 * y_gap);
-    rect(text_x - 20, y_start + 20 * y_gap, 250, 1.5*y_gap);
+    rect(text_x - 20, y_start + 20 * y_gap, 250, 1.5 * y_gap);
     text('Level 5: percentage changes', text_x, y_start + 21 * y_gap);
-    rect(text_x - 20, y_start + 22 * y_gap, 250, 1.5*y_gap);   
+    rect(text_x - 20, y_start + 22 * y_gap, 250, 1.5 * y_gap);
     text('Level 6: exponents', text_x, y_start + 23 * y_gap);
 
     textSize(30);
@@ -230,8 +230,8 @@ function show_score_etc() {
   textSize(15);
   text('Score: ' + score, 20, 20);
   text('Needed to clear level: ' + needed_to_clear, 20, 40);
-  text('Frame rate ' + 10 * round(frameRate() / 10), 180, 60)
-  text('Gravity ' + round(g, 2), 300, 60)
+  // text('Frame rate ' + 10 * round(frameRate() / 10), 180, 60)
+  // text('Gravity ' + round(g, 2), 300, 60)
   if (swaps_remaining <= 3) {
     fill('red');
   } else {
@@ -500,7 +500,7 @@ function make_text_for_this_level(this_block) {
     cat_to_string_list1 = ['⅒', '⅕', '¼', '⅓', '⅖', '½',
       '⅗', '⅔', '¾', '⅘', '⁹⁄₁₀', '⁴⁄₄'];
     cat_to_string_list2 = ['²⁄₂₀', '³⁄₁₅', '²⁄₈', '³⁄₉', '⁶⁄₁₅', '⁴⁄₈',
-      '⁹⁄₁₅', '⁶⁄₉', '⁶⁄₈', '¹²⁄₁₅', '¹⁸⁄₂₀', '⁷⁄₇'];   
+      '⁹⁄₁₅', '⁶⁄₉', '⁶⁄₈', '¹²⁄₁₅', '¹⁸⁄₂₀', '⁷⁄₇'];
     this_cat_val = cat_to_val_list[category - 1];
     this_cat_string1 = cat_to_string_list1[category - 1];
     // this_cat_string2 = cat_to_string_list2[category - 1];
@@ -508,7 +508,7 @@ function make_text_for_this_level(this_block) {
     if (this_display_type == 0) {
       this_text = this_cat_val;
       this_block.textSize = 18;
-    } 
+    }
     if (this_display_type == 1) {
       this_text = this_cat_string1;
       this_block.textSize = 28;
@@ -543,6 +543,25 @@ function make_text_for_this_level(this_block) {
       '∛8', '4', '8', '3', '5', '3√3'];
     cat_to_string_list =
       ['3⁻²', '2⁻³', '5⁻¹', '7⁰', '(½)²', '5¹ᐟ²',
+        '2', '8²ᐟ³', '2³', '9¹ᐟ²', '(⅕)⁻¹', '27¹ᐟ²'];
+    num_display_types = 2;
+    this_display_type = Math.floor(random(num_display_types));
+    this_cat_val = cat_to_val_list[category - 1];
+    this_cat_string = cat_to_string_list[category - 1];
+    if (this_display_type == 0) {
+      this_text = this_cat_val;
+      this_block.textSize = 20;
+    } else {
+      this_text = this_cat_string;
+      this_block.textSize = 20;
+    }
+  }
+  // Level 7: logs
+  if (level == 7) {
+    cat_to_val_list = ['⅑', '⅛', '⅕', '1', '¼', '√5',
+      '∛8', '4', '8', '3', '5', '3√3'];
+    cat_to_string_list =
+      ['log₂8', 'log₃(⅓)', 'ln(e²)', 'log3 + log5', 'log₃√3', '5¹ᐟ²',
         '2', '8²ᐟ³', '2³', '9¹ᐟ²', '(⅕)⁻¹', '27¹ᐟ²'];
     num_display_types = 2;
     this_display_type = Math.floor(random(num_display_types));
@@ -813,7 +832,7 @@ function make_box_walls() {
   left_wall.color = 'black';
   left_wall.x = scale_value * max_x / 2 - block_size * box_blocks_width / 2
     - gap * box_blocks_width / 2 - wall_thickness;
-  left_wall.y = scale_value * max_y/2 + y_offset;
+  left_wall.y = scale_value * max_y / 2 + y_offset;
 
   right_wall = new Sprite();
   right_wall.collider = 'static';
@@ -823,7 +842,7 @@ function make_box_walls() {
   right_wall.x = scale_value * max_x / 2 + block_size * box_blocks_width / 2
     + gap * (box_blocks_width - 1) / 2 + wall_thickness;
   right_wall.height = box_blocks_height * block_size;
-  right_wall.y = scale_value * max_y/2 + y_offset;
+  right_wall.y = scale_value * max_y / 2 + y_offset;
 
   floor = new Sprite();
   floor.collider = 'static';
@@ -831,7 +850,7 @@ function make_box_walls() {
   floor.height = wall_thickness;
   floor.color = 'black'
   floor.x = scale_value * max_x / 2 - gap / 4;
-  floor.y = scale_value * max_y/2 + block_size * box_blocks_height/2 + y_offset;
+  floor.y = scale_value * max_y / 2 + block_size * box_blocks_height / 2 + y_offset;
 }
 
 function look_for_block_at(row, col) {
